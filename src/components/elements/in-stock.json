@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_elements_in_stocks",
+  "info": {
+    "displayName": "In Stock"
+  },
+  "options": {},
+  "attributes": {
+    "InStock": {
+      "type": "boolean"
+    }
+  }
+}

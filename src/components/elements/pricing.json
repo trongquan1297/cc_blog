@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_elements_pricings",
+  "info": {
+    "displayName": "Pricing"
+  },
+  "options": {},
+  "attributes": {
+    "Price": {
+      "type": "integer"
+    },
+    "Currency": {
+      "type": "string"
+    }
+  }
+}

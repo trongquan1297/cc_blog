@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elements_branches",
+  "info": {
+    "displayName": "Branch"
+  },
+  "options": {},
+  "attributes": {
+    "Branch": {
+      "type": "enumeration",
+      "enum": [
+        "NIKE",
+        "ADIDAS",
+        "PUMA"
+      ]
+    }
+  }
+}

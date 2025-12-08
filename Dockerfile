@@ -2,7 +2,7 @@
 FROM node:16-alpine as build
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git > /dev/null 2>&1
 #ARG NODE_ENV=production
-ARG NODE_ENV=development
+ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /opt/
@@ -19,7 +19,7 @@ RUN npm run build
 FROM node:16-alpine
 RUN apk add --no-cache vips-dev
 #ARG NODE_ENV=production
-ARG NODE_ENV=development
+ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
 COPY --from=build /opt/node_modules ./node_modules

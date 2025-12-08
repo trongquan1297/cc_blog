@@ -2,32 +2,19 @@ openapi: 3.0.3
 info:
   title: cc_blog API
   version: "1.0.0"
-  description: "Auto-generated OpenAPI spec for this repository's Strapi content-type APIs. Review and adjust schemas as needed."
+  description: "Auto-generated OpenAPI spec for this repository's Strapi content-type APIs."
 servers:
   - url: http://localhost:1337
     description: Local development server
 paths:
   /api/articles:
     get:
-      summary: List Articles
-      parameters:
-        - in: query
-          name: pagination[page]
-          schema:
-            type: integer
-        - in: query
-          name: pagination[pageSize]
-          schema:
-            type: integer
+      summary: List articles
       responses:
         '200':
-          description: A list of articles
-          content:
-            application/json:
-              schema:
-                type: object
+          description: OK
     post:
-      summary: Create an Article
+      summary: Create article
       requestBody:
         required: true
         content:
@@ -45,12 +32,12 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Article by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Article (replace)
+      summary: Update (replace)
       requestBody:
         required: true
         content:
@@ -61,7 +48,7 @@ paths:
         '200':
           description: Updated
     patch:
-      summary: Update Article (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
@@ -72,19 +59,19 @@ paths:
         '200':
           description: Updated
     delete:
-      summary: Delete Article
+      summary: Delete
       responses:
         '204':
           description: No Content
 
   /api/authors:
     get:
-      summary: List Authors
+      summary: List authors
       responses:
         '200':
           description: OK
     post:
-      summary: Create Author
+      summary: Create author
       requestBody:
         required: true
         content:
@@ -102,12 +89,12 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Author by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Author
+      summary: Update (replace)
       requestBody:
         required: true
         content:
@@ -118,7 +105,7 @@ paths:
         '200':
           description: Updated
     patch:
-      summary: Update Author (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
@@ -129,19 +116,76 @@ paths:
         '200':
           description: Updated
     delete:
-      summary: Delete Author
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
+  /api/branchs:
+    get:
+      summary: List branchs
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create branch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '201':
+          description: Created
+  /api/branchs/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Branch'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
       responses:
         '204':
           description: No Content
 
   /api/categories:
     get:
-      summary: List Categories
+      summary: List categories
       responses:
         '200':
           description: OK
     post:
-      summary: Create Category
+      summary: Create category
       requestBody:
         required: true
         content:
@@ -159,12 +203,12 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Category by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Category
+      summary: Update (replace)
       requestBody:
         required: true
         content:
@@ -175,7 +219,7 @@ paths:
         '200':
           description: Updated
     patch:
-      summary: Update Category (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
@@ -186,19 +230,19 @@ paths:
         '200':
           description: Updated
     delete:
-      summary: Delete Category
+      summary: Delete
       responses:
         '204':
           description: No Content
 
   /api/globals:
     get:
-      summary: List Globals
+      summary: List globals
       responses:
         '200':
           description: OK
     post:
-      summary: Create Global
+      summary: Create global
       requestBody:
         required: true
         content:
@@ -216,12 +260,12 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Global by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Global
+      summary: Update (replace)
       requestBody:
         required: true
         content:
@@ -232,7 +276,7 @@ paths:
         '200':
           description: Updated
     patch:
-      summary: Update Global (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
@@ -243,19 +287,19 @@ paths:
         '200':
           description: Updated
     delete:
-      summary: Delete Global
+      summary: Delete
       responses:
         '204':
           description: No Content
 
   /api/lead-form-submissions:
     get:
-      summary: List Lead Form Submissions
+      summary: List lead-form-submissions
       responses:
         '200':
           description: OK
     post:
-      summary: Create Lead Form Submission
+      summary: Create lead-form-submission
       requestBody:
         required: true
         content:
@@ -273,82 +317,46 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Lead Form Submission by ID
-      responses:
-        '200':
-          description: OK
-    delete:
-      summary: Delete Lead Form Submission
-      responses:
-        '204':
-          description: No Content
-
-  /api/product-features:
-    get:
-      summary: List Product Features
-      responses:
-        '200':
-          description: OK
-    post:
-      summary: Create Product Feature
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductFeature'
-      responses:
-        '201':
-          description: Created
-  /api/product-features/{id}:
-    parameters:
-      - in: path
-        name: id
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get Product Feature by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Product Feature
+      summary: Update (replace)
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductFeature'
+              $ref: '#/components/schemas/LeadFormSubmission'
       responses:
         '200':
           description: Updated
     patch:
-      summary: Update Product Feature (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductFeature'
+              $ref: '#/components/schemas/LeadFormSubmission'
       responses:
         '200':
           description: Updated
     delete:
-      summary: Delete Product Feature
+      summary: Delete
       responses:
         '204':
           description: No Content
 
   /api/pages:
     get:
-      summary: List Pages
-      description: Pages use a populate middleware for content relations
+      summary: List pages
       responses:
         '200':
           description: OK
     post:
-      summary: Create Page
+      summary: Create page
       requestBody:
         required: true
         content:
@@ -366,12 +374,12 @@ paths:
         schema:
           type: string
     get:
-      summary: Get Page by ID
+      summary: Get by ID
       responses:
         '200':
           description: OK
     put:
-      summary: Update Page
+      summary: Update (replace)
       requestBody:
         required: true
         content:
@@ -382,7 +390,7 @@ paths:
         '200':
           description: Updated
     patch:
-      summary: Update Page (partial)
+      summary: Update (partial)
       requestBody:
         required: true
         content:
@@ -393,7 +401,235 @@ paths:
         '200':
           description: Updated
     delete:
-      summary: Delete Page
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
+  /api/products:
+    get:
+      summary: List products
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Created
+  /api/products/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
+  /api/product-categories:
+    get:
+      summary: List product-categories
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create product-category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategory'
+      responses:
+        '201':
+          description: Created
+  /api/product-categories/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategory'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategory'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
+  /api/product-features:
+    get:
+      summary: List product-features
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create product-feature
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '201':
+          description: Created
+  /api/product-features/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
+  /api/sizes:
+    get:
+      summary: List sizes
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create size
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Size'
+      responses:
+        '201':
+          description: Created
+  /api/sizes/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Size'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Size'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
       responses:
         '204':
           description: No Content
@@ -402,16 +638,12 @@ components:
   schemas:
     Article:
       type: object
-      description: Article object — update fields to match your content-type
       properties:
         id:
           type: integer
-        title:
+        name:
           type: string
-        slug:
-          type: string
-        content:
-          type: string
+
     Author:
       type: object
       properties:
@@ -419,8 +651,15 @@ components:
           type: integer
         name:
           type: string
-        bio:
+
+    Branch:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
           type: string
+
     Category:
       type: object
       properties:
@@ -428,13 +667,15 @@ components:
           type: integer
         name:
           type: string
+
     Global:
       type: object
       properties:
         id:
           type: integer
-        siteName:
+        name:
           type: string
+
     LeadFormSubmission:
       type: object
       properties:
@@ -442,27 +683,43 @@ components:
           type: integer
         name:
           type: string
-        email:
-          type: string
-        message:
-          type: string
-    ProductFeature:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
+
     Page:
       type: object
       properties:
         id:
           type: integer
-        title:
+        name:
           type: string
-        slug:
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
           type: string
-        content:
+
+    ProductCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    ProductFeature:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    Size:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
           type: string

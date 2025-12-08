@@ -7,9 +7,13 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "generate:docs": "node scripts/generate_api_docs.js",
+    "watch:docs": "node scripts/generate_api_docs.js --watch"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chokidar": "^3.5.3"
+  },
   "dependencies": {
     "@strapi/strapi": "4.10.4",
     "@strapi/plugin-users-permissions": "4.10.4",
