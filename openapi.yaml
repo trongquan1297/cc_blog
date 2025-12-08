@@ -1,0 +1,468 @@
+openapi: 3.0.3
+info:
+  title: cc_blog API
+  version: "1.0.0"
+  description: "Auto-generated OpenAPI spec for this repository's Strapi content-type APIs. Review and adjust schemas as needed."
+servers:
+  - url: http://localhost:1337
+    description: Local development server
+paths:
+  /api/articles:
+    get:
+      summary: List Articles
+      parameters:
+        - in: query
+          name: pagination[page]
+          schema:
+            type: integer
+        - in: query
+          name: pagination[pageSize]
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of articles
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      summary: Create an Article
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        '201':
+          description: Created
+  /api/articles/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Article by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Article (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Article (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Article
+      responses:
+        '204':
+          description: No Content
+
+  /api/authors:
+    get:
+      summary: List Authors
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '201':
+          description: Created
+  /api/authors/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Author by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Author (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Author
+      responses:
+        '204':
+          description: No Content
+
+  /api/categories:
+    get:
+      summary: List Categories
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '201':
+          description: Created
+  /api/categories/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Category by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Category (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Category
+      responses:
+        '204':
+          description: No Content
+
+  /api/globals:
+    get:
+      summary: List Globals
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Global
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Global'
+      responses:
+        '201':
+          description: Created
+  /api/globals/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Global by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Global
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Global'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Global (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Global'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Global
+      responses:
+        '204':
+          description: No Content
+
+  /api/lead-form-submissions:
+    get:
+      summary: List Lead Form Submissions
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Lead Form Submission
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadFormSubmission'
+      responses:
+        '201':
+          description: Created
+  /api/lead-form-submissions/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Lead Form Submission by ID
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Delete Lead Form Submission
+      responses:
+        '204':
+          description: No Content
+
+  /api/product-features:
+    get:
+      summary: List Product Features
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Product Feature
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '201':
+          description: Created
+  /api/product-features/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Product Feature by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Product Feature
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Product Feature (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductFeature'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Product Feature
+      responses:
+        '204':
+          description: No Content
+
+  /api/pages:
+    get:
+      summary: List Pages
+      description: Pages use a populate middleware for content relations
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create Page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page'
+      responses:
+        '201':
+          description: Created
+  /api/pages/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Page by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update Page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update Page (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete Page
+      responses:
+        '204':
+          description: No Content
+
+components:
+  schemas:
+    Article:
+      type: object
+      description: Article object — update fields to match your content-type
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        content:
+          type: string
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        bio:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    Global:
+      type: object
+      properties:
+        id:
+          type: integer
+        siteName:
+          type: string
+    LeadFormSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        message:
+          type: string
+    ProductFeature:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+    Page:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        content:
+          type: string
