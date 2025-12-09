@@ -86,15 +86,15 @@
     },
     "branch": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::branch.branch",
-      "inversedBy": "product"
+      "inversedBy": "products"
     },
     "sizes": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::size.size",
-      "mappedBy": "product"
+      "mappedBy": "products"
     }
   }
 }
