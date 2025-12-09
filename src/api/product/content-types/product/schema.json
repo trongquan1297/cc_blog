@@ -95,6 +95,11 @@
       "relation": "manyToMany",
       "target": "api::size.size",
       "mappedBy": "products"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
