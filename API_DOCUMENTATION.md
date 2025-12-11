@@ -12,6 +12,7 @@ Endpoints
 - Category: `GET /api/categories`, `GET /api/categories/{id}`, `POST /api/categories`, `PUT/PATCH /api/categories/{id}`, `DELETE /api/categories/{id}`
 - Global: `GET /api/globals`, `GET /api/globals/{id}`, `POST /api/globals`, `PUT/PATCH /api/globals/{id}`, `DELETE /api/globals/{id}`
 - LeadFormSubmission: `GET /api/lead-form-submissions`, `GET /api/lead-form-submissions/{id}`, `POST /api/lead-form-submissions`, `PUT/PATCH /api/lead-form-submissions/{id}`, `DELETE /api/lead-form-submissions/{id}`
+- Order: `GET /api/orders`, `GET /api/orders/{id}`, `POST /api/orders`, `PUT/PATCH /api/orders/{id}`, `DELETE /api/orders/{id}`
 - Page: `GET /api/pages`, `GET /api/pages/{id}`, `POST /api/pages`, `PUT/PATCH /api/pages/{id}`, `DELETE /api/pages/{id}`
 - Product: `GET /api/products`, `GET /api/products/{id}`, `POST /api/products`, `PUT/PATCH /api/products/{id}`, `DELETE /api/products/{id}`
 - ProductCategory: `GET /api/product-categories`, `GET /api/product-categories/{id}`, `POST /api/product-categories`, `PUT/PATCH /api/product-categories/{id}`, `DELETE /api/product-categories/{id}`

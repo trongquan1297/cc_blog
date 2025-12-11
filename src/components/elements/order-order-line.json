@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_elements_order_order_lines",
+  "info": {
+    "displayName": "Order/order_line"
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "unit_price": {
+      "type": "integer"
+    },
+    "subtotal": {
+      "type": "integer"
+    }
+  }
+}

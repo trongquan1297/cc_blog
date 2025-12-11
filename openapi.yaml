@@ -349,6 +349,63 @@ paths:
         '204':
           description: No Content
 
+  /api/orders:
+    get:
+      summary: List orders
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Created
+  /api/orders/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get by ID
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update (replace)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      summary: Update (partial)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete
+      responses:
+        '204':
+          description: No Content
+
   /api/pages:
     get:
       summary: List pages
@@ -677,6 +734,14 @@ components:
           type: string
 
     LeadFormSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    Order:
       type: object
       properties:
         id:
