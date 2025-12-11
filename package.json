@@ -15,9 +15,9 @@
     "chokidar": "^3.5.3"
   },
   "dependencies": {
-    "@strapi/strapi": "4.10.4",
-    "@strapi/plugin-users-permissions": "4.10.4",
-    "@strapi/plugin-i18n": "4.10.4",
+    "@strapi/strapi": "4.26.0",
+    "@strapi/plugin-users-permissions": "4.26.0",
+    "@strapi/plugin-i18n": "4.26.0",
     "mysql": "2.18.1"
   },
   "author": {
