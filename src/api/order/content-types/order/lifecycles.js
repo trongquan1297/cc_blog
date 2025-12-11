@@ -5,7 +5,7 @@ const generateOrderCode = () => {
   const y = now.getFullYear();
   const m = String(now.getMonth() + 1).padStart(2, '0');
   const d = String(now.getDate()).padStart(2, '0');
-  const random = Math.floor(Math.random() * 1000000)
+  const random = Math.floor(Math.random() * 100000000)
     .toString()
     .padStart(6, '0');
   return `ORD-${y}${m}${d}-${random}`;
