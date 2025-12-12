@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product",
+    "displayName": "Sản phẩm",
     "description": ""
   },
   "options": {
@@ -89,12 +89,6 @@
       "relation": "manyToOne",
       "target": "api::branch.branch",
       "inversedBy": "products"
-    },
-    "sizes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::size.size",
-      "mappedBy": "products"
     },
     "seo": {
       "type": "component",

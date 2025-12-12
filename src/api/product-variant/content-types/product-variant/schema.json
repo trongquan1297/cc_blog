@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_variants",
+  "info": {
+    "singularName": "product-variant",
+    "pluralName": "product-variants",
+    "displayName": "Phân loại sản phẩm",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "SKU": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
+      "inversedBy": "product_variants"
+    },
+    "size": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::size.size",
+      "inversedBy": "sizes"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "discount_price": {
+      "type": "integer"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "discount_start_date": {
+      "type": "datetime"
+    },
+    "discount_end_date": {
+      "type": "datetime"
+    },
+    "bestseller": {
+      "type": "boolean"
+    }
+  }
+}
