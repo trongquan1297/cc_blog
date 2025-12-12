@@ -4,7 +4,8 @@
   "info": {
     "singularName": "branch",
     "pluralName": "branches",
-    "displayName": "Branch"
+    "displayName": "Nhãn hiệu",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

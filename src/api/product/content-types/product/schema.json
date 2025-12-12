@@ -94,6 +94,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "product_variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-variant.product-variant",
+      "mappedBy": "product"
     }
   }
 }

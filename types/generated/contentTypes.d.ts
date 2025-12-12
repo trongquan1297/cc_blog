@@ -366,7 +366,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
     description: 'Create your blog content';
-    displayName: 'Article';
+    displayName: 'B\u00E0i vi\u1EBFt';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -424,7 +424,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   collectionName: 'authors';
   info: {
     description: 'Create authors for your content';
-    displayName: 'Author';
+    displayName: 'T\u00E1c gi\u1EA3';
     pluralName: 'authors';
     singularName: 'author';
   };
@@ -460,7 +460,8 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
 export interface ApiBranchBranch extends Schema.CollectionType {
   collectionName: 'branches';
   info: {
-    displayName: 'Branch';
+    description: '';
+    displayName: 'Nh\u00E3n hi\u1EC7u';
     pluralName: 'branches';
     singularName: 'branch';
   };
@@ -662,7 +663,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     customer_address: Attribute.String;
     customer_name: Attribute.String;
     customer_phone: Attribute.String;
-    items: Attribute.Component<'elements.order-order-line', true>;
+    items: Attribute.Component<'elements.order-line', true>;
     note: Attribute.String;
     publishedAt: Attribute.DateTime;
     status: Attribute.Enumeration<
@@ -683,15 +684,13 @@ export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
     description: '';
-    displayName: 'Page';
+    displayName: 'Trang';
     name: 'page';
     pluralName: 'pages';
     singularName: 'page';
   };
   options: {
     draftAndPublish: true;
-    increments: true;
-    timestamps: true;
   };
   pluginOptions: {
     i18n: {
@@ -833,6 +832,11 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
     discount_price: Attribute.Integer;
     discount_start_date: Attribute.DateTime;
     price: Attribute.Integer;
+    product: Attribute.Relation<
+      'api::product-variant.product-variant',
+      'manyToOne',
+      'api::product.product'
+    >;
     publishedAt: Attribute.DateTime;
     size: Attribute.Relation<
       'api::product-variant.product-variant',
@@ -898,6 +902,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToMany',
       'api::product-category.product-category'
+    >;
+    product_variants: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-variant.product-variant'
     >;
     publishedAt: Attribute.DateTime;
     quantity: Attribute.Integer;

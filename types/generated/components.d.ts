@@ -101,19 +101,20 @@ export interface ElementsNotificationBanner extends Schema.Component {
   };
 }
 
-export interface ElementsOrderOrderLine extends Schema.Component {
-  collectionName: 'components_elements_order_order_lines';
+export interface ElementsOrderLine extends Schema.Component {
+  collectionName: 'components_elements_order_lines';
   info: {
-    displayName: 'Order/order_line';
+    description: '';
+    displayName: 'order line';
   };
   attributes: {
-    product: Attribute.Relation<
-      'elements.order-order-line',
-      'manyToOne',
-      'api::product.product'
+    product_variant: Attribute.Relation<
+      'elements.order-line',
+      'oneToOne',
+      'api::product-variant.product-variant'
     >;
-    quantity: Attribute.Integer;
-    subtotal: Attribute.Integer;
+    quantity: Attribute.Integer & Attribute.Required;
+    sub_total: Attribute.Integer;
     unit_price: Attribute.Integer;
   };
 }
@@ -473,7 +474,7 @@ declare module '@strapi/types' {
       'elements.footer-section': ElementsFooterSection;
       'elements.logos': ElementsLogos;
       'elements.notification-banner': ElementsNotificationBanner;
-      'elements.order-order-line': ElementsOrderOrderLine;
+      'elements.order-line': ElementsOrderLine;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
       'layout.navbar': LayoutNavbar;

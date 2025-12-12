@@ -43,7 +43,7 @@
     "items": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.order-order-line"
+      "component": "elements.order-line"
     }
   }
 }
