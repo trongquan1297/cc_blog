@@ -868,7 +868,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    bestseller: Attribute.Boolean;
     blocks: Attribute.DynamicZone<
       [
         'shared.media',
@@ -882,7 +881,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::branch.branch'
     >;
-    color: Attribute.String;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -892,12 +890,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     > &
       Attribute.Private;
     description: Attribute.Text;
-    discount_end_date: Attribute.Date;
-    discount_price: Attribute.Integer;
-    discount_start_date: Attribute.Date;
-    instock: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    price: Attribute.Integer & Attribute.Required;
     product_categories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
@@ -909,7 +902,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product-variant.product-variant'
     >;
     publishedAt: Attribute.DateTime;
-    quantity: Attribute.Integer;
     seo: Attribute.Component<'shared.seo'>;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     updatedAt: Attribute.DateTime;

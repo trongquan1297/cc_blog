@@ -42,38 +42,11 @@
       "required": true,
       "unique": true
     },
-    "price": {
-      "type": "integer",
-      "required": true
-    },
-    "instock": {
-      "type": "boolean",
-      "default": true,
-      "required": true
-    },
     "product_categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product-category.product-category",
       "inversedBy": "products"
-    },
-    "color": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "integer"
-    },
-    "discount_price": {
-      "type": "integer"
-    },
-    "discount_start_date": {
-      "type": "date"
-    },
-    "discount_end_date": {
-      "type": "date"
-    },
-    "bestseller": {
-      "type": "boolean"
     },
     "blocks": {
       "type": "dynamiczone",
