@@ -4,7 +4,7 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order",
+    "displayName": "Đơn hàng",
     "description": ""
   },
   "options": {
@@ -43,7 +43,7 @@
     "items": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.order-order-line"
+      "component": "elements.order-line"
     }
   }
 }

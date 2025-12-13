@@ -9,11 +9,6 @@
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "plans": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.plan"
     }
   }
 }
