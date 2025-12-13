@@ -19,7 +19,6 @@ module.exports = {
     if (!data.code || String(data.code).trim() === '') {
       data.code = generateOrderCode();
     }
-
     if (!data.status) {
       data.status = 'pending';
     }
@@ -29,29 +28,30 @@ module.exports = {
     const { data } = event.params;
     if (!data) return;
 
-    // KHÔNG đụng items / total_price ở đây nữa
-    // Nếu rất muốn đảm bảo luôn có code cho đơn cũ:
     if (data.code !== undefined && String(data.code).trim() === '') {
       data.code = generateOrderCode();
     }
   },
+
   async afterCreate(event) {
     const id = event.result && event.result.id;
     if (!id) return;
 
-    const fresh = await strapi.entityService.findOne(
-      'api::order.order',
-      id,
-      {
-        populate: {
-          items: {
-            populate: {
-              product: true,
+    const fresh = await strapi.entityService.findOne('api::order.order', id, {
+      populate: {
+        items: {
+          populate: {
+            product_variant: {
+              populate: {
+                product: true,
+                size: true,
+                color: true,
+              },
             },
           },
         },
-      }
-    );
+      },
+    });
 
     event.result = fresh;
   },
@@ -60,21 +60,18 @@ module.exports = {
     const id = event.result && event.result.id;
     if (!id) return;
 
-    const fresh = await strapi.entityService.findOne(
-      'api::order.order',
-      id,
-      {
-        populate: {
-          items: {
-            populate: {
-              product: true,
+    const fresh = await strapi.entityService.findOne('api::order.order', id, {
+      populate: {
+        items: {
+          populate: {
+            product_variant: {
+              populate: { product: true, size: true, color: true },
             },
           },
         },
       }
-    );
+    });
 
     event.result = fresh;
   },
-  
 };

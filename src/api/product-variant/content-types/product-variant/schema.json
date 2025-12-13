@@ -34,13 +34,15 @@
       "inversedBy": "sizes"
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "discount_price": {
       "type": "integer"
     },
     "stock": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "discount_start_date": {
       "type": "datetime"
@@ -56,6 +58,19 @@
       "relation": "manyToOne",
       "target": "api::product.product",
       "inversedBy": "product_variants"
+    },
+    "hottrend": {
+      "type": "boolean"
+    },
+    "pictures": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

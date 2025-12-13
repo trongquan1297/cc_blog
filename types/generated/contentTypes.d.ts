@@ -831,7 +831,9 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
     discount_end_date: Attribute.DateTime;
     discount_price: Attribute.Integer;
     discount_start_date: Attribute.DateTime;
-    price: Attribute.Integer;
+    hottrend: Attribute.Boolean;
+    pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    price: Attribute.Integer & Attribute.Required;
     product: Attribute.Relation<
       'api::product-variant.product-variant',
       'manyToOne',
@@ -844,7 +846,7 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
       'api::size.size'
     >;
     SKU: Attribute.UID<'api::product-variant.product-variant', 'title'>;
-    stock: Attribute.Integer;
+    stock: Attribute.Integer & Attribute.Required;
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
