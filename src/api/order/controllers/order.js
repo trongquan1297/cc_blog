@@ -22,9 +22,10 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
             product_variant: {
               fields: ['id', 'SKU', 'title', 'price', 'discount_price'],
               populate: {
-                product: { fields: ['id', 'title'] }, // ✅ không query product.price
+                product: { fields: ['id', 'title'] },
                 size: { fields: ['id', 'name'] },
                 color: { fields: ['id', 'name'] },
+                pictures: true, // <--- 1. THÊM DÒNG NÀY: Để lấy danh sách ảnh
               },
             },
           },
@@ -48,17 +49,35 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({
         createdAt: order.createdAt,
         items: (order.items || []).map((item) => {
           const v = item.product_variant;
+          
+          // <--- 2. LOGIC LẤY ẢNH ĐẦU TIÊN ---
+          let firstPicture = null;
+          if (v && v.pictures && v.pictures.length > 0) {
+            const img = v.pictures[0]; // Lấy ảnh đầu tiên trong mảng
+            firstPicture = {
+                // Lấy URL thumbnail cho nhẹ, nếu không có thì lấy ảnh gốc
+                url: img.formats?.thumbnail?.url || img.formats?.small?.url || img.url,
+                // Trả về cả url gốc nếu cần zoom
+                original_url: img.url 
+            };
+          }
+          // ----------------------------------
+
           return {
             quantity: item.quantity,
             unit_price: item.unit_price,
             sub_total: item.sub_total,
             product_variant: v
               ? {
+                  id: v.id,
+                  sku: v.SKU,   // Bổ sung hiển thị SKU cho rõ ràng
+                  title: v.title, // Bổ sung title variant
                   price: v.price,
                   discount_price: v.discount_price,
                   size: v.size ? { name: v.size.name } : null,
                   color: v.color ? { name: v.color.name } : null,
                   product: v.product ? { id: v.product.id, title: v.product.title } : null,
+                  picture: firstPicture // <--- Gán ảnh vào response
                 }
               : null,
           };
