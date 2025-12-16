@@ -530,6 +530,48 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCollectionCollection extends Schema.CollectionType {
+  collectionName: 'collections';
+  info: {
+    description: '';
+    displayName: 'B\u1ED9 s\u01B0u t\u1EADp';
+    pluralName: 'collections';
+    singularName: 'collection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text;
+    isshow: Attribute.Boolean;
+    name: Attribute.String;
+    pictures: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    product_variants: Attribute.Relation<
+      'api::collection.collection',
+      'manyToMany',
+      'api::product-variant.product-variant'
+    >;
+    publishedAt: Attribute.DateTime;
+    slug: Attribute.UID<'api::collection.collection', 'title'>;
+    title: Attribute.String;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::collection.collection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiColorColor extends Schema.CollectionType {
   collectionName: 'colors';
   info: {
@@ -816,6 +858,11 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
   };
   attributes: {
     bestseller: Attribute.Boolean;
+    collections: Attribute.Relation<
+      'api::product-variant.product-variant',
+      'manyToMany',
+      'api::collection.collection'
+    >;
     color: Attribute.Relation<
       'api::product-variant.product-variant',
       'manyToOne',
@@ -1384,6 +1431,7 @@ declare module '@strapi/types' {
       'api::author.author': ApiAuthorAuthor;
       'api::branch.branch': ApiBranchBranch;
       'api::category.category': ApiCategoryCategory;
+      'api::collection.collection': ApiCollectionCollection;
       'api::color.color': ApiColorColor;
       'api::global.global': ApiGlobalGlobal;
       'api::order.order': ApiOrderOrder;

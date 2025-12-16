@@ -71,6 +71,12 @@
       ],
       "type": "media",
       "multiple": true
+    },
+    "collections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::collection.collection",
+      "mappedBy": "product_variants"
     }
   }
 }
